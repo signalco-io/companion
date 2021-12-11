@@ -23,6 +23,7 @@ jobs:
       uses: actions/setup-java@v2.4.0
       with:
         java-version: 17
+        distribution: jdk
     - name: Build
       run: dotnet build -c ${{ matrix.configuration }} -f net6.0-android
     - name: Publish
