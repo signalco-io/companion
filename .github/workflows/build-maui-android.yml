@@ -1,0 +1,43 @@
+name: Build Signalco.Companion.Maui app for Android
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build ${{ matrix.configuration }}
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        configuration: ['Debug', 'Release']
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.x
+    - name: Install workload
+      run: dotnet workload install maui-android ios maccatalyst 
+    - name: Setup Java JDK
+      uses: actions/setup-java@v2.4.0
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+    - name: Build
+      run: dotnet build -c ${{ matrix.configuration }} -f net6.0-android
+    - name: Publish
+      run: dotnet publish -c ${{ matrix.configuration }} -f net6.0-android -o ./artifacts
+    - name: Pack files
+      shell: bash
+      run: |
+        # Pack files
+        7z a -tzip "companion-maui-android-${{ matrix.configuration }}.zip" "./artifacts/*"
+        
+        # Delete output directory
+        rm -r "artifacts"
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.3.0
+      with:
+        name: "artifact-${{ matrix.configuration }}"
+        path: "companion-maui-android-${{ matrix.configuration }}.zip"
