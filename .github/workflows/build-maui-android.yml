@@ -24,4 +24,18 @@ jobs:
       with:
         java-version: 17
     - name: Build
-      run: dotnet build -c ${{ matrix.configuration }}
+      run: dotnet build -c ${{ matrix.configuration }} -f net6.0-android
+    - name: Publish
+      run: dotnet publish -c ${{ matrix.configuration }} -f net6.0-android -o ./artifacts
+    - name: Pack files
+      shell: bash
+      run: |
+        # Pack files
+        7z a -tzip "companion-maui-android-${{ matrix.configuration }}.zip" "./artifacts/*"
+        
+        # Delete output directory
+        rm -r "artifacts"
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2.3.0
+      with:
+        path: "companion-maui-android-${{ matrix.configuration }}.zip"
