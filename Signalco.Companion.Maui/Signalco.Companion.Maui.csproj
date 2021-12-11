@@ -37,7 +37,6 @@
 		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#000000" />
 
 		<!-- Images -->
-		<MauiImage Include="Resources\Images\*" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -47,22 +46,6 @@
 		<!-- Required - WinUI does not yet have buildTransitive for everything -->
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-preview3" />
 		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.29-preview3" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Platforms\Android\Resources\drawable\widget_bg.xml" />
-	  <None Remove="Platforms\Android\Resources\layout\action_widget.xml" />
-	  <None Remove="Platforms\Android\Resources\values\strings.xml" />
-	  <None Remove="Platforms\Android\Resources\values\styles.xml" />
-	  <None Remove="Platforms\Android\Resources\xml\action_widget.xml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Resources\Images\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
