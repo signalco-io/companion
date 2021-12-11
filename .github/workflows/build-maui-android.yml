@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-java@v2.4.0
       with:
         distribution: 'temurin'
-        java-version: '17'
+        java-version: '11'
     - name: Build
       run: dotnet build -c ${{ matrix.configuration }} -f net6.0-android
     - name: Publish
