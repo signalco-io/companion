@@ -22,8 +22,8 @@ jobs:
     - name: Setup Java JDK
       uses: actions/setup-java@v2.4.0
       with:
+        distribution: 'temurin'
         java-version: '17'
-        distribution: 'microsoft'
     - name: Build
       run: dotnet build -c ${{ matrix.configuration }} -f net6.0-android
     - name: Publish
