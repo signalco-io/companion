@@ -12,7 +12,7 @@ namespace Signalco.Companion.Maui.Platforms.Android
 {
     [BroadcastReceiver(Label = "@string/action_widget_name")]
     [IntentFilter(new string[] { "android.appwidget.action.APPWIDGET_UPDATE" })]
-    [MetaData ("android.appwidget.provider", Resource = "@xml/widget_word")]
+    [MetaData ("android.appwidget.provider", Resource = "@xml/action_widget")]
     public class ActionWidget : AppWidgetProvider
     {
         private static string AnnouncementClick = "AnnouncementClickTag";
