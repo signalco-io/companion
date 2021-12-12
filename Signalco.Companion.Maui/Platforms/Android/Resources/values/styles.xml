@@ -1,13 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <resources>
-  <style name="WidgetBackground">
-    <item name="android:background">@drawable/widget_bg</item>
-  </style>
-
-  <style name="Text" />
-
-  <style name="Text.Loading">
-    <item name="android:textSize">14sp</item>
-    <item name="android:textColor">@android:color/black</item>
+  <style name="WidgetTheme" parent="Theme.AppCompat.DayNight">
+    <item name="backgroundRadius">@dimen/widget_bg_radius_dimen</item>
   </style>
 </resources>

@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
-using Microsoft.Maui.Controls.Compatibility;
+﻿using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Hosting;
 
 namespace Signalco.Companion.Maui
@@ -15,6 +13,7 @@ namespace Signalco.Companion.Maui
 				.ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIconsRegular");
 				});
 
 			return builder.Build();

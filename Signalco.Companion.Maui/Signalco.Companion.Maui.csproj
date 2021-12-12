@@ -54,6 +54,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\Android\Resources\values\attrs.xml" />
+	  <None Remove="Platforms\Android\Resources\values\dimensions.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Include="Platforms\Android\ActionWidget.cs" />
 	  <None Include="Platforms\Android\WidgetService.cs" />
 	</ItemGroup>

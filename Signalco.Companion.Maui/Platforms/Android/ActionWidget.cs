@@ -10,7 +10,7 @@ using Android.Widget;
 
 namespace Signalco.Companion.Maui.Platforms.Android
 {
-    [BroadcastReceiver(Label = "@string/action_widget_name")]
+    [BroadcastReceiver(Label = "@string/action_widget_name", Exported = true)]
     [IntentFilter(new string[] { "android.appwidget.action.APPWIDGET_UPDATE" })]
     [MetaData ("android.appwidget.provider", Resource = "@xml/action_widget")]
     public class ActionWidget : AppWidgetProvider
@@ -47,18 +47,18 @@ namespace Signalco.Companion.Maui.Platforms.Android
             intent.PutExtra(AppWidgetManager.ExtraAppwidgetIds, appWidgetIds);
 
             // Register click event for the Background
-            var piBackground = PendingIntent.GetBroadcast(context, 0, intent, PendingIntentFlags.UpdateCurrent);
-            widgetView.SetOnClickPendingIntent(Resource.Id.actionWidgetBg, piBackground);
+            //var piBackground = PendingIntent.GetBroadcast(context, 0, intent, PendingIntentFlags.UpdateCurrent);
+            //widgetView.SetOnClickPendingIntent(Resource.Id.actionWidgetBg, piBackground);
 
             // Register click event for the Announcement-icon
-            widgetView.SetOnClickPendingIntent(Resource.Id.actionWidgetButton, GetPendingSelfIntent(context, AnnouncementClick));
+            widgetView.SetOnClickPendingIntent(Resource.Id.actionWidgetBackground, GetPendingSelfIntent(context, AnnouncementClick));
         }
 
         private PendingIntent GetPendingSelfIntent(Context context, string action)
         {
             var intent = new Intent(context, typeof(ActionWidget));
             intent.SetAction(action);
-            return PendingIntent.GetBroadcast(context, 0, intent, 0);
+            return PendingIntent.GetBroadcast(context, 0, intent, PendingIntentFlags.Immutable);
         }
 
         public override void OnReceive(Context context, Intent intent)
